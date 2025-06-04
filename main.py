@@ -10,6 +10,9 @@ from features.age_feature import process_age_feature
 from features.bmi_feature import process_bmi_feature
 from features.cholesterol_feature import process_cholesterol_feature
 from features.clustering_feature import process_clustering_feature
+from visualizations.categorical_summary import plot_categorical_summary
+from visualizations.numeric_summary import plot_numeric_summary
+
 
 
 # Menu loop
