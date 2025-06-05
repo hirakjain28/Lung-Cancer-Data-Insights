@@ -43,7 +43,7 @@ def main_menu():
         print("7. Predict Survival Rate")
         print("8. Exit")
         
-        choice = input("Enter your choice (1-7): ")
+        choice = input("Enter your choice (1-8): ")
 
         if choice == '1':
             df = process_age_feature(df)
@@ -57,7 +57,7 @@ def main_menu():
             plot_treatment_duration_by_stage(df)
         elif choice == '6':
             df.to_csv('data/dataset_med_processed.csv', index=False)
-            print("✅ Dataset saved as 'data/dataset_med_processed.csv'")
+            print("✅ Dataset saved as 'dataset_med_processed.csv'")
         elif choice == '7':          
             print(df.columns)
             run_survival_model(df)
