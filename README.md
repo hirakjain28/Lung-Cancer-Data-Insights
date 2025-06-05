@@ -94,5 +94,5 @@ _Source: (https://www.kaggle.com/datasets/amankumar094/lung-cancer-dataset)
 
 **Hirak Jain**  
 B.Tech CSE (Data Science), Year 2  
-Feel free to connect with me on [LinkedIn](www.linkedin.com/in/hirak-jain-2954a228b)  
+Feel free to connect with me on (www.linkedin.com/in/hirak-jain-2954a228b)  
 ⭐ If you found this useful, please consider giving the repo a star!
