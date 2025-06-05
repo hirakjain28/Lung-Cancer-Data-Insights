@@ -23,6 +23,11 @@ from features.clustering_feature import process_clustering_feature
 from visualizations.treatment_duration_plot import plot_treatment_duration_by_stage
 
 # -------------------------------
+# Import Survival Model
+# -------------------------------
+from models.survival_predictor import run_survival_model
+
+# -------------------------------
 # Feature Analysis Menu
 # -------------------------------
 def main_menu():
@@ -35,7 +40,8 @@ def main_menu():
         print("4. Analyze Clustering Feature")
         print("5. Visualize Treatment Duration by Cancer Stage")
         print("6. Save Processed Dataset")
-        print("7. Exit")
+        print("7. Predict Survival Rate")
+        print("8. Exit")
         
         choice = input("Enter your choice (1-7): ")
 
@@ -52,7 +58,10 @@ def main_menu():
         elif choice == '6':
             df.to_csv('data/dataset_med_processed.csv', index=False)
             print("✅ Dataset saved as 'data/dataset_med_processed.csv'")
-        elif choice == '7':
+        elif choice == '7':          
+            print(df.columns)
+            run_survival_model(df)
+        elif choice == '8':
             print("👋 Exiting. Goodbye!")
             break
         else:
