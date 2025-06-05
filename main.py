@@ -6,7 +6,7 @@ import pandas as pd
 from preprocessing.feature_engineering import add_treatment_duration
 
 # Load dataset
-df = pd.read_csv('dataset_med.csv')  # Make sure dataset is under 'data/' folder
+df = pd.read_csv('dataset_med.csv')  
 df = add_treatment_duration(df)           # Add treatment_duration_days
 
 # -------------------------------

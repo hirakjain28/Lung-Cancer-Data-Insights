@@ -6,30 +6,23 @@ from sklearn.metrics import classification_report, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def preprocess_for_model(df, target='survived'):
-    # Drop irrelevant or leakage columns
-    drop_cols = ['patient_id', 'diagnosis_date', 'end_treatment_date']
-    df = df.drop(columns=[col for col in drop_cols if col in df.columns])
-
-    # Drop rows with missing target
+def preprocess_for_model(df):
+    target = 'survived'
     df = df[df[target].notna()]
 
-    # Encode categorical variables
-    cat_cols = df.select_dtypes(include='object').columns.tolist()
-    cat_cols = [col for col in cat_cols if col != target]
-    
-    df = df.copy()
-    label_encoders = {}
-    for col in cat_cols:
+    # Drop non-numeric or derived string features
+    drop_cols = ['id', 'diagnosis_date', 'end_treatment_date', 'AgeGroup', 'CholesterolCategory']
+    df = df.drop(columns=[col for col in drop_cols if col in df.columns])
+
+    # Encode remaining categorical columns
+    from sklearn.preprocessing import LabelEncoder
+    encoders = {}
+    for col in df.select_dtypes(include='object').columns:
         le = LabelEncoder()
         df[col] = le.fit_transform(df[col].astype(str))
-        label_encoders[col] = le
+        encoders[col] = le
 
-    # Encode target if it's categorical
-    if df[target].dtype == 'object':
-        df[target] = LabelEncoder().fit_transform(df[target].astype(str))
-
-    return df, label_encoders
+    return df, encoders
 
 def run_survival_model(df):
     print("\n🧠 Starting Survival Prediction Model...")
